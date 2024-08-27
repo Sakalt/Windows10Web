@@ -131,27 +131,27 @@ function openSettings() {
 }
 
 // イベントリスナーの設定
-document.getElementById('startBtn').addEventListener('click', () => {
-    document.getElementById('startMenu').style.display = 'block';
-    document.getElementById('startBtn').style.display = 'none';
-    document.getElementById('endMenu').style.display = 'flex';
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('startBtn').addEventListener('click', () => {
+        document.getElementById('startMenu').style.display = 'block';
+        document.getElementById('startBtn').style.display = 'none';
+        document.getElementById('endMenu').style.display = 'flex';
+    });
+
+    document.getElementById('endMenu').addEventListener('click', () => {
+        document.getElementById('startMenu').style.display = 'none';
+        document.getElementById('endMenu').style.display = 'none';
+        document.getElementById('startBtn').style.display = 'flex';
+    });
+
+    document.getElementById('openNotepad').addEventListener('click', openNotepad);
+    document.getElementById('openEdge').addEventListener('click', openEdge);
+    document.getElementById('openPaint').addEventListener('click', openPaint);
+    document.getElementById('openSettings').addEventListener('click', openSettings);
+
+    document.onclick = hideMenu;
+    document.oncontextmenu = rightClick;
 });
-
-document.getElementById('endMenu').addEventListener('click', () => {
-    document.getElementById('startMenu').style.display = 'none';
-    document.getElementById('endMenu').style.display = 'none';
-    document.getElementById('startBtn').style.display = 'flex';
-});
-
-// アプリを開くためのボタンの設定
-document.getElementById('openNotepad').addEventListener('click', openNotepad);
-document.getElementById('openEdge').addEventListener('click', openEdge);
-document.getElementById('openPaint').addEventListener('click', openPaint);
-document.getElementById('openSettings').addEventListener('click', openSettings);
-
-// コンテキストメニューの設定
-document.onclick = hideMenu;
-document.oncontextmenu = rightClick;
 
 function hideMenu() {
     document.getElementById("contextMenu").style.display = "none";
